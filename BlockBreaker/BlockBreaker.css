@@ -1,0 +1,102 @@
+body{
+    position: relative;
+    display: grid;
+    place-items: center;
+    overflow-y: hidden;
+}
+
+#gameBoard{
+    position: relative;
+    width: 640px;
+    height: 750px;
+    background-color: rgb(228, 228, 228);
+    border-radius: 15px;
+}
+
+#blockArea{
+    height: 320px;
+    padding: 5% 2%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.block{
+    width: 100px;
+    height: 20px;
+    border-radius: 5px;
+    background-color: rgb(201, 76, 54);
+    float: left;
+    margin: 1px;
+}
+
+#playerArea{
+    position: relative;
+    width: 100%;
+    height: 30%;
+}
+
+#player{
+    position: absolute;
+    bottom: 100px;
+    left: 250px;
+    width: 100px;
+    height: 20px;
+    border-radius: 5px;
+    background-color: rgb(193, 9, 193);
+}
+
+#ball{
+    position: absolute;
+    background-color: rgb(62, 62, 62);
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+}
+
+.large-power{
+    background-color: darkblue;
+}
+
+.double-ball-power{
+    background-color: green;
+}
+
+#gameSettings{    
+    position: absolute;
+    background-color: rgb(228, 228, 228);
+    width: 640px;
+    height: 750px;
+    border-radius: 15px;
+    display: grid;
+    place-items: center;
+    z-index: 2;
+}
+
+#gameSettings i {
+    color: #9a24b2;
+    font-size: 120px;
+}
+
+@media (max-width: 675px) {
+    #gameBoard{
+        width: 535px;
+        height: 750px;
+    }
+
+    #gameSettings{    
+        width: 535px;
+    }
+    
+}
+
+@media (min-width: 675px) and (max-width: 450) {
+    #gameBoard{
+        width: 370px;
+        height: 750px;
+    }
+
+    #gameSettings{    
+        width: 370px;
+    }
+    
+}
