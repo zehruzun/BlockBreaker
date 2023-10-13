@@ -1,4 +1,3 @@
-console.log("deneme");
 let player: HTMLElement | null;
 let playerPositionX: number;
 let ballHTML: HTMLElement | null;
@@ -22,15 +21,13 @@ window.onload = () => {
     blocks = Array.from(document.querySelectorAll(".block"));
     blocksArea = document.getElementById("blockArea");
     gameSetting = document.getElementById("gameSettings");
-    console.log(blocks);
-
 }
 
 function platformMovement(event:MouseEvent) {
     const rect:DOMRect | undefined = ballArea?.getBoundingClientRect();
 
     if(rect != undefined && player != null){
-        playerPositionX = event.clientX - rect.left; // Fare pozisyonu (x) div'in içinde
+        playerPositionX = event.clientX - rect.left;
 
         if(playerPositionX > 0 && playerPositionX < Number(ballArea?.getBoundingClientRect().width) - Number(player.getBoundingClientRect().width)){
             player.style.left = playerPositionX + "px";
@@ -60,7 +57,6 @@ function ballMovement(collider:HTMLElement) {
     ballHTMLX += ballSpeedX;
     ballHTMLY += ballSpeedY;
 
-    // Topun çarpışma kontrolü
     if (ballHTMLX + ballHTML.offsetWidth > ballArea.offsetWidth || ballHTMLX < 0) {
         ballSpeedX = -ballSpeedX;
     }
@@ -73,7 +69,6 @@ function ballMovement(collider:HTMLElement) {
         console.log("oyun bitti");
     }
 
-    // Platform ile çarpışma kontrolü
     if (ballHTMLY + ballHTML.offsetHeight > collider.offsetTop &&
         ballHTMLY + ballHTML.offsetHeight < collider.offsetTop + collider.offsetHeight &&
         ballHTMLX + ballHTML.offsetWidth > collider.offsetLeft &&
@@ -89,7 +84,7 @@ function ballMovement(collider:HTMLElement) {
 }
 
 function detectCollider() {
-    let hasCollided = false; // Topun çarpışıp çarpmadığını izleyen bir bayrak
+    let hasCollided = false;
 
     if (ballHTML != null && blocks != null){
         for (let i = 0; i < blocks.length; i++) {
@@ -98,7 +93,6 @@ function detectCollider() {
                 ballHTMLX + ballHTML.offsetWidth > blocks[i].offsetLeft &&
                 ballHTMLX < blocks[i].offsetLeft + blocks[i].offsetWidth) {
                     blocks[i].style.backgroundColor = "rgba(0,0,0,0)";
-                    console.log("here");
                     ballSpeedY = -ballSpeedY;
                     blocks.splice(i, 1);
                     hasCollided = true;
